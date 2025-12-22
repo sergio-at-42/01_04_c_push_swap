@@ -18,7 +18,7 @@ Thanks to my pear **Wissem B.** for his many contributions.
 C Programming Language - 2nd Edition (Brian W.Kernighan / Dennis M.Ritchie).  
 https://www.learn-c.org  
 https://koor.fr/C/cstdarg/va_arg.wp  
-IA : ChatGPT to learn me how to use and understand **valgrind**.
+IA : not used.
 
 ## Technical choices
 
