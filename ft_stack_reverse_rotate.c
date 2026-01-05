@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_stack_reverse_rotate.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbeldjao <serge.beldjaoui@learner.42.te    +#+  +:+       +#+        */
+/*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 10:11:29 by sbeldjao          #+#    #+#             */
-/*   Updated: 2025/12/22 10:13:43 by sbeldjao         ###   ########.fr       */
+/*   Created: 2026/01/05 17:49:02 by Serge             #+#    #+#             */
+/*   Updated: 2026/01/05 17:49:07 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	ft_suspend_display()
+void	ft_stack_reverse_rotate(t_stack *stack)
 {
-	int	i;
-
-	while (scanf("%d", &i) == 1);
-}
-
-int	main()
-{
-
-	
-// ft_suspend_display();
-
-	return (0);
+	if (stack->size > 1)
+	{
+		stack->top->previous = stack->last;
+		stack->last->next = stack->top;
+		stack->top = stack->last;
+		stack->last = stack->top->previous;
+		stack->top->previous = NULL;
+		stack->last->next = NULL;
+	}
 }
