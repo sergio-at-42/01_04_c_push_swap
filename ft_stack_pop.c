@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:46:01 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/05 17:46:14 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/06 14:48:15 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	ft_stack_pop(t_stack *stack)
 	top = stack->top;
 	element = top->integer;
 	stack->top = top->next;
-	if (stack->size > 1)
-		stack->top->previous = NULL;
-	else
+	if (stack->top == NULL)
 		stack->last = NULL;
+	else
+		stack->top->previous = NULL;
 	stack->size--;
 	free(top);
 	top = NULL;

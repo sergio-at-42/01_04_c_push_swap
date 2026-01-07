@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 16:39:26 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/05 20:07:47 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/07 17:20:11 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,36 @@ int	ft_return_error(void)
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	t_element	*element;
+	t_list_op	*lst_op;
 	int		i;
 
-	stack_a = ft_stack_init();
-	stack_b = ft_stack_init();
+	lst_op = ft_op_init();
+	stack_a = ft_stack_init('a');
+	stack_b = ft_stack_init('b');
 	if (argc > 1)
 	{
 		i = 0;
 		while (++i < argc)
-			printf("%d\n", ft_stack_push(stack_a, ft_atoi(argv[i]))->integer);
+			printf("%d\n", ft_stack_add_element(stack_a, ft_atoi(argv[i]))->integer);
 	}
 	printf("-----------------------------------------------------------------------------------------\n");
-	ft_insertion_sort(stack_a, stack_b);
-	i = -1;
-	while (++i < stack_a->size)
-		printf("%d\n", (stack_a->top + i)->integer);
+	ft_insertion_sort(stack_a, stack_b, lst_op);
+	element = stack_a->top;
+	while (element)
+	{
+		printf("%d\n", element->integer);
+		element = element->next;
+	}
+	printf("Tri de la stack : %s\n", ft_stack_check(stack_a)?"OK":"NOK");
+	printf("Nombre d'operations : %d\n", lst_op->nb);
+	while (stack_a->size > 0)
+		ft_stack_del_element(stack_a);
+	free(stack_a);
+	while (stack_b->size > 0)
+		ft_stack_del_element(stack_b);
+	free(stack_b);
 	return (0);
 }
