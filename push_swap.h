@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:06:50 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/07 17:28:58 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/07 18:59:16 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_stack
 	char				name;
 	struct s_element	*top;
 	struct s_element	*last;
+	struct s_element	*min;
+	struct s_element	*max;
 	int					size;
 }						t_stack;
 

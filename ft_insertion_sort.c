@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:46:12 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/07 17:26:49 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/07 18:56:19 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 
 void	ft_insertion_sort(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op)
 {
-
-	printf("=========> Debut du tri...\n");
 	if (stack_a->size > 1)
 	{
 		if (stack_a->top->next->integer < stack_a->top->integer)
@@ -42,12 +40,25 @@ void	ft_insertion_sort(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op)
 			ft_stack_push(stack_a, stack_b, lst_op);
 			while (stack_a->size)
 			{
-				while (stack_a->top->integer < stack_b->top->integer || stack_a->top->integer > stack_b->last->integer)
+				if (stack_a->top->integer < stack_b->top->integer)
 				{
-					ft_stack_reverse_rotate(stack_b, lst_op);
-					if (stack_b->top->integer > stack_b->last->integer && 
-						(stack_a->top->integer < stack_b->last->integer || stack_a->top->integer > stack_b->top->integer))
-							break;
+					while (stack_a->top->integer < stack_b->top->integer)
+					{
+						ft_stack_rotate(stack_b, lst_op);
+						if (stack_b->top->integer > stack_b->last->integer && 
+							(stack_a->top->integer < stack_b->last->integer || stack_a->top->integer > stack_b->top->integer))
+								break;
+					}
+				}
+				else
+				{
+					while (stack_a->top->integer > stack_b->last->integer)
+					{
+						ft_stack_reverse_rotate(stack_b, lst_op);
+						if (stack_b->top->integer > stack_b->last->integer && 
+							(stack_a->top->integer < stack_b->last->integer || stack_a->top->integer > stack_b->top->integer))
+								break;
+					}
 				}
 				ft_stack_push(stack_a, stack_b, lst_op);
 			}

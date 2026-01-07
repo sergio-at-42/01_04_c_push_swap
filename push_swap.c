@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 16:39:26 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/07 17:20:11 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/07 18:49:05 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ int	main(int argc, char **argv)
 	{
 		i = 0;
 		while (++i < argc)
-			printf("%d\n", ft_stack_add_element(stack_a, ft_atoi(argv[i]))->integer);
+			ft_stack_add_element(stack_a, ft_atoi(argv[i]));
 	}
-	printf("-----------------------------------------------------------------------------------------\n");
 	ft_insertion_sort(stack_a, stack_b, lst_op);
 	element = stack_a->top;
 	while (element)

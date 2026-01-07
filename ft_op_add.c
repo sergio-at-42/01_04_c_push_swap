@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 15:53:17 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/07 17:15:13 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/07 17:59:26 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_op	*ft_op_add(t_list_op *list_op, char op_type, char stack)
 		list_op->last->next = NULL;
 	list_op->last = op;
 	list_op->nb++;
-	
 	if (op_type == 'i')
 		write(1,"rr",2);
 	else
