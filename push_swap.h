@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:06:50 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/07 18:59:16 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/09 16:38:19 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,14 @@ void		ft_stack_swap(t_stack *stack, t_list_op	*lst_op);
 void		ft_stack_rotate(t_stack *stack, t_list_op *lst_op);
 void		ft_stack_reverse_rotate(t_stack *stack, t_list_op *lst_op);
 int			ft_atoi(const char *nptr);
-void		ft_insertion_sort(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op);
 int			ft_stack_check(t_stack *stack);
+t_element	*ft_stack_min(t_stack *stack);
+t_element	*ft_stack_max(t_stack *stack);
+int			ft_stack_pos_min(t_stack *stack);
+int			ft_stack_pos_max(t_stack *stack);
+void		ft_stack_swap_pos(t_stack *stack, t_list_op *lst_op, int pos);
+void		ft_sort_insertion(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op);
+void		ft_sort_selection(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op);
+
 
 #endif

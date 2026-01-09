@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:44:17 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/07 17:25:08 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/08 13:45:21 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ void	ft_stack_push(t_stack *stack_out, t_stack *stack_in, t_list_op *lst_op)
 			stack_in->top->previous = element_push;
 		stack_in->top = element_push;
 		stack_in->size++;
+		if (stack_out->min == element_push)
+			ft_stack_min(stack_out);
+		if (stack_out->max == element_push)
+			ft_stack_max(stack_out);
+		if (!stack_in->min || element_push->integer < stack_in->min->integer)
+			stack_in->min = element_push;
+		if (!stack_in->max || element_push->integer > stack_in->max->integer)
+			stack_in->max = element_push;
 		ft_op_add(lst_op, 'p', stack_in->name);
 	}
 }

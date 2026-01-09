@@ -6,7 +6,7 @@
 #    By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 14:00:27 by Serge             #+#    #+#              #
-#    Updated: 2026/01/07 17:29:11 by Serge            ###   ########.fr        #
+#    Updated: 2026/01/09 14:14:19 by Serge            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,14 @@ SOURCES = \
 	ft_stack_reverse_rotate.c \
 	ft_stack_rotate.c \
 	ft_stack_swap.c \
-	ft_insertion_sort.c \
 	ft_stack_check.c \
+	ft_stack_min.c \
+	ft_stack_max.c \
+	ft_stack_pos_min.c \
+	ft_stack_pos_max.c \
+	ft_stack_swap_pos.c \
+	ft_sort_insertion.c \
+	ft_sort_selection.c \
 	push_swap.c
 
 OBJECTS = $(SOURCES:.c=.o)
