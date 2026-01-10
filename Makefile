@@ -6,7 +6,7 @@
 #    By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 14:00:27 by Serge             #+#    #+#              #
-#    Updated: 2026/01/09 14:14:19 by Serge            ###   ########.fr        #
+#    Updated: 2026/01/10 14:42:39 by Serge            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SOURCES = \
 
 OBJECTS = $(SOURCES:.c=.o)
 
-TARGET = prog
+TEST_PROG = push_swap_test
 
 all : $(NAME)
 
@@ -53,3 +53,12 @@ fclean : clean
 	rm -f $(NAME) $(TARGET)
 
 re : fclean all
+
+clear :
+	clear
+
+test : clear $(TEST_PROG)
+
+$(TEST_PROG) : $(SOURCES)
+	$(CC) $(SOURCES) -o $(TEST_PROG)
+	./$(TEST_PROG) 12 34 56 78 96 999 456 123 321 654 987 2 42

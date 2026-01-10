@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 16:39:26 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/09 17:02:55 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/10 15:40:49 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,18 @@ int	main(int argc, char **argv)
 			ft_stack_add_element(stack_a, ft_atoi(argv[i]));
 	}
 
-	ft_sort_insertion(stack_a, stack_b, lst_op);
+	// ft_sort_insertion(stack_a, stack_b, lst_op);
 
-	// ft_sort_selection(stack_a, stack_b, lst_op);
+	ft_sort_selection(stack_a, stack_b, lst_op);
 
 	// ft_stack_swap_pos(stack_a, lst_op, ft_stack_pos_max(stack_a));
 	element = stack_a->top;
-	while (element)
+	i = 1;
+	while (i <= stack_a->size)
 	{
 		printf("   %d", element->integer);
 		element = element->next;
+		i++;
 	}
 		printf("\n");
 

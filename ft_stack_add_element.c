@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:05:31 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/07 19:04:24 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/09 21:05:40 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ t_element	*ft_stack_add_element(t_stack *stack, int integer)
 	if (!element)
 		return (NULL);
 	element->integer = integer;
-	element->previous = NULL;
-	element->next = stack->top;
-	if (stack->top)
+	if (stack->last)
 	{
+		element->previous = stack->last;
+		element->next = stack->top;
 		stack->top->previous = element;
+		stack->last->next = element;
 		if (integer < stack->min->integer)
 			stack->min = element;
 		if (integer > stack->max->integer)
@@ -32,11 +33,13 @@ t_element	*ft_stack_add_element(t_stack *stack, int integer)
 	}
 	else
 	{
-		stack->last = element;
+		element->previous = element;
+		element->next = element;
+		stack->top = element;
 		stack->min = element;
 		stack->max = element;
 	}
-	stack->top = element;
+	stack->last = element;
 	stack->size++;
 	return (element);
 }
