@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_del_element.c                             :+:      :+:    :+:   */
+/*   ft_stack_del.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:03:56 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/06 16:05:41 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/10 20:56:05 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stack_del_element(t_stack *stack)
+void	ft_stack_del(t_stack *stack)
 {
-	int			element;
-	t_element	*top;
+	t_element	*element;
+	int			i;
 
-	top = stack->top;
-	element = top->integer;
-	stack->top = top->next;
-	if (stack->top == NULL)
-		stack->last = NULL;
-	else
-		stack->top->previous = NULL;
-	stack->size--;
-	free(top);
-	top = NULL;
-	return (element);
+	i = 1;
+	while (i <= stack->size)
+	{
+		element = stack->top;
+		stack->top = element->next;
+		free(element);
+		i++;
+	}
+	free(stack);
 }

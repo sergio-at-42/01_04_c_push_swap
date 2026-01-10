@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:06:50 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/09 16:38:19 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/10 19:10:13 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_element
 {
 	int					integer;
+	int					norme;
 	struct s_element	*previous;
 	struct s_element	*next;
 }						t_element;
@@ -33,6 +34,14 @@ typedef struct s_stack
 	struct s_element	*max;
 	int					size;
 }						t_stack;
+
+// typedef struct s_clone
+// {
+// 	int					integer;
+// 	struct s_element	*element;
+// 	struct s_clone		*previous;
+// 	struct s_clone		*next;
+// }						t_clone;
 
 // typedef	enum e_op_type {
 // 	s, p, r, rr
@@ -55,9 +64,11 @@ typedef struct s_list_op
 int			ft_return_error(void);
 t_list_op	*ft_op_init();
 t_op		*ft_op_add(t_list_op *list_op, char op_type, char stack);
+void		ft_op_del(t_list_op *list_op);
 t_stack		*ft_stack_init(char name);
+void		ft_stack_norme(t_stack *stack);
 t_element	*ft_stack_add_element(t_stack *stack, int integer);
-int			ft_stack_del_element(t_stack *stack);
+void		ft_stack_del(t_stack *stack);
 void		ft_stack_push(t_stack *stack_out, t_stack *stack_in, t_list_op	*op);
 // int			ft_stack_pop(t_stack *stack);
 void		ft_stack_swap(t_stack *stack, t_list_op	*lst_op);

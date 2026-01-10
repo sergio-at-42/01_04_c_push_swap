@@ -6,7 +6,7 @@
 #    By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 14:00:27 by Serge             #+#    #+#              #
-#    Updated: 2026/01/10 14:42:39 by Serge            ###   ########.fr        #
+#    Updated: 2026/01/10 19:10:38 by Serge            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,11 @@ SOURCES = \
 	ft_atoi.c \
 	ft_op_init.c \
 	ft_op_add.c \
+	ft_op_del.c \
 	ft_stack_init.c \
+	ft_stack_del.c \
+	ft_stack_norme.c \
 	ft_stack_add_element.c \
-	ft_stack_del_element.c \
 	ft_stack_push.c \
 	ft_stack_reverse_rotate.c \
 	ft_stack_rotate.c \

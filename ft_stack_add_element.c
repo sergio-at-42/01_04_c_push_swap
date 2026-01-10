@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:05:31 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/09 21:05:40 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/10 15:56:22 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_element	*ft_stack_add_element(t_stack *stack, int integer)
 	if (!element)
 		return (NULL);
 	element->integer = integer;
+	element->norme = 0;
 	if (stack->last)
 	{
 		element->previous = stack->last;

@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 16:39:26 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/10 15:40:49 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/10 20:51:47 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	main(int argc, char **argv)
 		while (++i < argc)
 			ft_stack_add_element(stack_a, ft_atoi(argv[i]));
 	}
-
+	ft_stack_norme(stack_a);
+	
 	// ft_sort_insertion(stack_a, stack_b, lst_op);
 
 	ft_sort_selection(stack_a, stack_b, lst_op);
@@ -45,7 +46,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (i <= stack_a->size)
 	{
-		printf("   %d", element->integer);
+		printf("   %d => %d", element->norme, element->integer);
 		element = element->next;
 		i++;
 	}
@@ -55,11 +56,8 @@ int	main(int argc, char **argv)
 	printf("Tri de la stack : %s\n", ft_stack_check(stack_a)?"OK":"NOK");
 	printf("Nombre d'operations : %d\n", lst_op->nb);
 
-	while (stack_a->size > 0)
-		ft_stack_del_element(stack_a);
-	free(stack_a);
-	while (stack_b->size > 0)
-		ft_stack_del_element(stack_b);
-	free(stack_b);
+	ft_stack_del(stack_a);
+	ft_stack_del(stack_b);
+	ft_op_del(lst_op);
 	return (0);
 }
