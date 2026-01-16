@@ -6,7 +6,7 @@
 #    By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 14:00:27 by Serge             #+#    #+#              #
-#    Updated: 2026/01/10 19:10:38 by Serge            ###   ########.fr        #
+#    Updated: 2026/01/16 11:38:05 by Serge            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SOURCES = \
 	ft_stack_rotate.c \
 	ft_stack_swap.c \
 	ft_stack_check.c \
+	ft_stack_disorder.c \
 	ft_stack_min.c \
 	ft_stack_max.c \
 	ft_stack_pos_min.c \
