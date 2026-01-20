@@ -6,9 +6,11 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:15:07 by sbeldjao          #+#    #+#             */
-/*   Updated: 2026/01/05 17:45:17 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/20 16:14:07 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 /*
 Description : checks for white-space characters. In the "C" and "POSIX" 

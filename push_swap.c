@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 16:39:26 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/16 11:53:07 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/20 19:41:24 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,21 @@ int	main(int argc, char **argv)
 
 	ft_stack_norme(stack_a);
 	
-	ft_sort_insertion(stack_a, lst_op);
-	ft_stack_display(stack_a);
+	ft_benchmark(stack_a, lst_op);
+
+	// ft_sort_insertion(stack_a, lst_op);
+	// ft_stack_display(stack_a);
 
 	// ft_sort_selection(stack_a, stack_b, lst_op);
+	// ft_stack_display(stack_a);
+
+	// ft_sort_bubble(stack_a, lst_op);
+	// ft_stack_display(stack_a);
+
+	ft_sort_min_max(stack_a, stack_b, lst_op);
+	ft_stack_display(stack_a);
+
+	// ft_sort_radix(stack_a, lst_op);
 	// ft_stack_display(stack_a);
 
 	// ft_stack_swap_pos(stack_a, lst_op, ft_stack_pos_max(stack_a));
@@ -79,13 +90,19 @@ int	main(int argc, char **argv)
 	// ft_stack_swap(stack_a, lst_op);
 	// ft_stack_display(stack_a);
 
+	ft_op_disp_lst(lst_op);
+
+	printf("\n");
 	printf("stack A ->   size : %d   min : %d   max : %d\n", stack_a->size, stack_a->min->integer, stack_a->max->integer);
 	printf("Tri de la stack : %s\n", ft_stack_check(stack_a)?"OK":"NOK");
 	printf("Disorder de la stack apres : %f\n", ft_stack_disorder(stack_a));
 	printf("Nombre d'operations : %d\n", lst_op->nb);
+	printf("\n");
+
+	ft_benchmark(stack_a, lst_op);
 
 	ft_stack_del(stack_a);
 	ft_stack_del(stack_b);
-	ft_op_del(lst_op);
+	ft_op_del_lst(lst_op);
 	return (0);
 }

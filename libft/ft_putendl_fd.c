@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_op_del.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/07 15:53:17 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/10 21:07:10 by Serge            ###   ########.fr       */
+/*   Created: 2025/11/14 11:17:55 by sbeldjao          #+#    #+#             */
+/*   Updated: 2026/01/20 15:51:14 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_op_del(t_list_op *list_op)
+/*
+Description : Outputs the string ’s’ to the given file descriptor followed by 
+a newline.
+*/
+/*
+Return : None
+*/
+void	ft_putendl_fd(const char *s, int fd)
 {
-	t_op	*op;
-
-	while (list_op->first)
-	{
-		op = list_op->first;
-		list_op->first = op->next;
-		free(op);
-	}
-	free(list_op);
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }
