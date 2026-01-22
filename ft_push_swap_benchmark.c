@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_benchmark.c                                     :+:      :+:    :+:   */
+/*   ft_push_swap_benchmark.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 13:55:44 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/20 20:59:09 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/22 17:20:49 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,31 @@
 static	void	ft_disp_bench_discoder(t_stack *stack)
 {
 	ft_putstr_fd("[bench] disorder:	", 2);
-	ft_putnbr_fd((int)(ft_stack_disorder(stack) * 100), 2);
+	ft_putnbr_fd((int)(stack->disorder * 100), 2);
 	ft_putstr_fd(".", 2);
-	ft_putnbr_fd(((int)(ft_stack_disorder(stack) * 10000)) % 100, 2);
+	ft_putnbr_fd(((int)(stack->disorder * 10000)) % 100, 2);
 	ft_putendl_fd("%", 2);
 }
 
-static	void	ft_disp_bench_strategy()
+static	void	ft_disp_bench_strategy(t_stack *stack, t_list_op *lst_op)
 {
 	ft_putstr_fd("[bench] strategy:	", 2);
-	ft_putstr_fd("Adaptive / O(n n)", 2);
+	if (lst_op->strategy == 's')
+		ft_putstr_fd("Simple / O(n²)", 2);
+	else if (lst_op->strategy == 'm')
+		ft_putstr_fd("Medium / O(n√n)", 2);
+	else if (lst_op->strategy == 'c')
+		ft_putstr_fd("Complex / O(n log n)", 2);
+	else if (lst_op->strategy == 'a')
+	{
+		ft_putstr_fd("Adaptive / ", 2);
+		if (stack->disorder < 0.2)
+			ft_putstr_fd("O(n²)", 2);
+		else if (stack->disorder >= 0.2 && stack->disorder < 0.5)
+			ft_putstr_fd("O(n√n)", 2);
+		else
+			ft_putstr_fd("O(n log n)", 2);
+	}
 	ft_putendl_fd("", 2);
 }
 
@@ -65,10 +80,10 @@ static	void	ft_disp_bench_ops(t_list_op *lst_op)
 	ft_putendl_fd("", 2);
 }
 
-void	ft_benchmark(t_stack *stack, t_list_op *lst_op)
+void	ft_push_swap_benchmark(t_stack *stack, t_list_op *lst_op)
 {
 	ft_disp_bench_discoder(stack);
-	ft_disp_bench_strategy();
+	ft_disp_bench_strategy(stack, lst_op);
 	ft_disp_bench_total_ops(lst_op);
 	ft_disp_bench_ops(lst_op);
 }

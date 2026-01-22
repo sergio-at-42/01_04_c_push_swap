@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 13:55:44 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/16 12:09:40 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/22 14:46:33 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ float	ft_stack_disorder(t_stack *stack)
 			element1 = element1->next;
 			i++;
 		}
+		disorder /= pairs;
 	}
-	return (disorder / pairs);
+	return (disorder);
 }

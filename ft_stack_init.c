@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:58:18 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/07 19:00:11 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/22 17:21:22 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack	*ft_stack_init(char name)
 		return (NULL);
 	stack->name = name;
 	stack->size = 0;
+	stack->disorder = 0;
 	stack->top = NULL;
 	stack->last = NULL;
 	stack->min = NULL;

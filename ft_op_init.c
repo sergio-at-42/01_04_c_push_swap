@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:41:16 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/07 16:41:20 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/22 17:01:53 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ t_list_op	*ft_op_init()
 	lst_op->first = NULL;
 	lst_op->last = NULL;
 	lst_op->nb = 0;
+	lst_op->benchmark = 0;
+	lst_op->strategy = 'a';
 	return (lst_op);
 }

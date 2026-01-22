@@ -6,7 +6,7 @@
 #    By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 14:00:27 by Serge             #+#    #+#              #
-#    Updated: 2026/01/20 19:46:23 by Serge            ###   ########.fr        #
+#    Updated: 2026/01/22 14:02:49 by Serge            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,9 @@ SOURCES = \
 	ft_sort_bubble.c \
 	ft_sort_min_max.c \
 	ft_sort_radix.c \
-	ft_benchmark.c \
+	ft_push_swap_benchmark.c \
+	ft_push_swap_parser.c \
+	ft_push_swap_error.c \
 	push_swap.c
 
 OBJECTS = $(SOURCES:.c=.o)

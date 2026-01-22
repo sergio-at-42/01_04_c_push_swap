@@ -6,115 +6,84 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:46:12 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/19 17:14:56 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/21 15:38:08 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	display_stack(t_stack *stack)
+static	int	ft_power(int nb, int power)
 {
-	int			i;
-	t_element	*element;
+	int	result;
 
-	printf("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvstack %c   <===>   stack->min\n", stack->name, stack->min);
-	i = 0;
-	element = stack->top;
-	while (i < stack->size)
+	if (power < 0)
+		return (0);
+	result = 1;
+	while (power > 0)
 	{
-		printf("   %d", element->norme);
-		i++;
-		element = element->next;
+		result = nb * result;
+		power--;
 	}
-	printf("\n");
-	printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
+	return (result);
 }
 
-static int	ft_nb_digit(int num)
+static int	ft_nb_bit(int num)
 {
-	int	nb_digit;
+	int	nb_bit;
 
-	nb_digit = 1;
-	while (num >= 10)
+	nb_bit = 1;
+	while (num >= 2)
 	{
-		num /= 10;
-		nb_digit++;
+		num /= 2;
+		nb_bit++;
 	}
-	return (nb_digit);
+	return (nb_bit);
 }
 
-static int	ft_extract_digit(int num, int num_digit)
+static int	ft_extract_bit(int num, int num_bit, int nb_bit)
 {
-	int	digit;
+	int	bit;
 
-	while (num_digit > 1)
+	while (nb_bit >= num_bit)
 	{
-		num /= 10;
-		num_digit--;
+		nb_bit--;
+		bit = num / ft_power(2, nb_bit);
+		num -= bit * ft_power(2, nb_bit);
 	}
-	digit = num % 10;
-	return (digit);
+	return (bit);
 }
 
-void	ft_sort_radix(t_stack *stack, t_list_op	*lst_op)
+void	ft_sort_radix(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op)
 {
-	t_element	*first;
-	t_element	*element_next;
-	int	nb_digit;
-	int	num_digit;
-	int	digit;
-	int	nb_rotate;
+	int	nb_bit;
+	int	num_bit;
+	int	bit;
 	int	i;
 
-	if (stack->size > 1)
+	if (stack_a->size > 1)
 	{
-		first = stack->top;
-		nb_digit = ft_nb_digit(stack->max->norme);
-		num_digit = 1;
-		while (num_digit <= nb_digit)
+		nb_bit = ft_nb_bit(stack_a->max->norme);
+		num_bit = 1;
+		while (num_bit <= nb_bit)
 		{
-			i = 1;
-			while (i <= stack->size)
+			i = stack_a->size;
+			while (i > 0)
 			{
-				element_next = stack->top->next;
-				digit = ft_extract_digit(stack->top->norme, num_digit);
-				nb_rotate = 0;
-				while (digit < ft_extract_digit(stack->top->previous->norme, num_digit) && stack->top != first)
+				if (ft_stack_disorder(stack_a))
 				{
-					ft_stack_reverse_rotate(stack, lst_op);
-					ft_stack_swap(stack, lst_op);
-					if (stack->top->next == first)
-						first = stack->top;
-					nb_rotate++;
-				}
-
-				// while (digit > ft_extract_digit(stack->top->next->norme, num_digit) && stack->top->next != first)
-				// {
-				// 	ft_stack_swap(stack, lst_op);
-				// 	if (stack->top->next == first)
-				// 		first = stack->top;
-				// 	ft_stack_rotate(stack, lst_op);
-				// 	nb_rotate++;
-				// 	// digit = ft_extract_digit(stack->top->norme, num_digit);
-				// 	// digit_next = ft_extract_digit(stack->top->next->norme, num_digit);
-				// }
-
-				if (nb_rotate)
-				{				
-					nb_rotate = nb_rotate / (stack->size / 2);
-					while (stack->top != element_next)
-					{
-						if (nb_rotate)
-							ft_stack_reverse_rotate(stack, lst_op);
-						else
-							ft_stack_rotate(stack, lst_op);
-					}
+					bit = ft_extract_bit(stack_a->top->norme, num_bit, nb_bit);
+					if (bit)
+						ft_stack_rotate(stack_a, lst_op);
+					else
+						ft_stack_push(stack_a, stack_b, lst_op);
+					i--;
 				}
 				else
-					ft_stack_rotate(stack, lst_op);
-				i++;
+					i = 0;
 			}
-			num_digit++;
+			while (stack_b->size)
+				ft_stack_push(stack_b, stack_a, lst_op);
+			num_bit++;
 		}
 	}
 }
