@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:52:13 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/22 18:08:39 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/23 19:02:44 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,23 @@ static int	ft_check_option(char *arg, t_list_op *lst_op)
 	else
 		return (1);
 	return (0);
+}
+
+static int	ft_check_num(char *arg)
+{
+	int	error;
+	int	i;
+
+	error = 1;
+	i = 0;
+	while (arg[i] != '\0')
+	{
+		if (!(arg[i] >= 9 && arg[i] <= 13) && arg[i] != 32 && arg[i] != '-' && arg[i] != '+'
+			&& !(arg[i] >= 48 && arg[i] <= 57))
+				error = 0;
+		i++;
+	}
+	return (error);
 }
 
 static int	ft_check_double(int arg_int, t_stack *stack)
@@ -56,13 +73,18 @@ int	ft_push_swap_parser(int argc, char **argv, t_stack *stack, t_list_op *lst_op
 	if (argc > 1)
 	{
 		i = 1;
-		while (i < argc)
+		while (i < argc && !error)
 		{
 			if (ft_check_option(argv[i], lst_op))
 			{			
-				arg_int = ft_atoi(argv[i]);
-				if (ft_check_double(arg_int, stack))
-					ft_stack_add_element(stack, arg_int);
+				if (ft_check_num(argv[i]))
+				{
+					arg_int = ft_atoi(argv[i]);
+					if (ft_check_double(arg_int, stack))
+						ft_stack_add_element(stack, arg_int);
+					else
+						error = 1;
+				}
 				else
 					error = 1;
 			}
@@ -73,8 +95,3 @@ int	ft_push_swap_parser(int argc, char **argv, t_stack *stack, t_list_op *lst_op
 	}
 	return (error);
 }
-
-
-
-// ft_push_swap_error(void)
-// int	ft_strcmp(const char *s1, const char *s2) 

@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 16:39:26 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/22 18:05:17 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/24 17:51:44 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,18 @@ int	main(int argc, char **argv)
 	if (error)
 		return (ft_push_swap_error(error));
 
-	printf("Disorder de la stack avant : %f\n", ft_stack_disorder(stack_a));
-
-	
-	
-	ft_push_swap_benchmark(stack_a, lst_op);
-
-	// ft_sort_insertion(stack_a, lst_op);
-
-	// ft_sort_selection(stack_a, stack_b, lst_op);
-
-	// ft_sort_bubble(stack_a, lst_op);
-
-	// ft_sort_min_max(stack_a, stack_b, lst_op);
-
-	ft_sort_radix(stack_a, stack_b, lst_op);
+	if (lst_op->strategy == 's' || (lst_op->strategy == 'a'
+		&& stack_a->disorder < 0.2))
+			ft_sort_selection(stack_a, stack_b, lst_op);
+			// ft_sort_insertion(stack_a, lst_op);
+			// ft_sort_bubble(stack_a, lst_op);
+			// ft_sort_min_max(stack_a, stack_b, lst_op);
+	else if (lst_op->strategy == 'm' || (lst_op->strategy == 'a'
+		&& stack_a->disorder >= 0.2 && stack_a->disorder < 0.5))
+			ft_sort_min_max(stack_a, stack_b, lst_op);
+	else if (lst_op->strategy == 'c' || (lst_op->strategy == 'a'
+		&& stack_a->disorder >= 0.5))
+			ft_sort_radix(stack_a, stack_b, lst_op);
 
 	// ft_stack_swap_pos(stack_a, lst_op, ft_stack_pos_max(stack_a));
 
@@ -78,31 +75,6 @@ int	main(int argc, char **argv)
 	// ft_stack_display(stack_a);
 
 	ft_op_disp_lst(lst_op);
-
-	// printf("\n");
-	// ft_stack_display(stack_a);
-	// printf("\n");
-
-	// printf("\n");
-	// printf("stack A ->   size : %d   min : %d   max : %d\n", stack_a->size, stack_a->min->integer, stack_a->max->integer);
-	// printf("Tri de la stack : %s\n", ft_stack_check(stack_a)?"OK":"NOK");
-	// printf("Disorder de la stack apres : %f\n", ft_stack_disorder(stack_a));
-	// printf("Nombre d'operations : %d\n", lst_op->nb);
-	// printf("\n");
-// i = 0;
-// while (i < 256)
-// {
-// 	printf("%3d => %c   ", i, (unsigned char)i);
-// 	i++;
-// }
-printf("\n");
-printf("\n");
-printf("²²²   ²²²   \n");
-printf("√√√   √√√   \n");
-
-printf("\n");
-printf("\n");
-
 	if (lst_op->benchmark)
 		ft_push_swap_benchmark(stack_a, lst_op);
 

@@ -6,29 +6,11 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:46:12 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/13 16:49:30 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/24 17:31:28 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// static void	display_stack(t_stack *stack)
-// {
-// 	int			i;
-// 	t_element	*element;
-
-// 	printf("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv\n");
-// 	element = stack->top;
-// 	i = 0;
-// 	while (i < stack->size)
-// 	{
-// 		printf("   %d", element->integer);
-// 		element = element->next;
-// 		i++;
-// 	}
-// 	printf("\n");
-// 	printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
-// }
 
 void	ft_sort_insertion(t_stack *stack, t_list_op	*lst_op)
 {
@@ -36,6 +18,8 @@ void	ft_sort_insertion(t_stack *stack, t_list_op	*lst_op)
 	t_element	*first;
 	t_element	*current;
 	int			i;
+// int j;
+// t_element *el;
 
 	first = stack->top;
 	current = stack->top->next;
@@ -56,6 +40,24 @@ void	ft_sort_insertion(t_stack *stack, t_list_op	*lst_op)
 		current = next;
 		next = current->next;
 		i++;
+
+
+// printf("Disorder %f\n", ft_stack_disorder(stack));
+// if (ft_stack_disorder(stack) < 0.32 && ft_stack_disorder(stack) > 0.28)
+// {
+// 	el = stack->top;
+// 	j = 1;
+// 	while (j <= stack->size)
+// 	{
+// 		printf("%d ", el->integer);
+// 		el = el->next;
+// 		j++;
+// 	}
+// 	printf("\n");
+// 	printf("\n");
+// 	printf("\n");
+// }
+
 	}
 	ft_stack_rotate(stack,  lst_op);
 }
