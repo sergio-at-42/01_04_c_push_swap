@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:44:17 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/10 15:52:18 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/26 16:06:14 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ void	ft_stack_push(t_stack *stack_out, t_stack *stack_in, t_list_op *lst_op)
 	if (stack_out->size > 0)
 	{
 		element_push = stack_out->top;
-		stack_out->top = stack_out->top->next;
 		stack_out->size--;
 		if (stack_out->size == 0)
+		{
+			stack_out->top = NULL;
 			stack_out->last = NULL;
+		}
 		else
 		{
+			stack_out->top = stack_out->top->next;
 			stack_out->top->previous = stack_out->last;
 			stack_out->last->next = stack_out->top;
 		}

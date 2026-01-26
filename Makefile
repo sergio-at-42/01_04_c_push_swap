@@ -6,7 +6,7 @@
 #    By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 14:00:27 by Serge             #+#    #+#              #
-#    Updated: 2026/01/22 14:02:49 by Serge            ###   ########.fr        #
+#    Updated: 2026/01/24 21:35:30 by Serge            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,12 @@ SOURCES = \
 	ft_stack_pos_max.c \
 	ft_stack_swap_pos.c \
 	ft_sort_insertion.c \
+	ft_sort_insertion_invert.c \
 	ft_sort_selection.c \
 	ft_sort_bubble.c \
 	ft_sort_min_max.c \
+	ft_sort_chunk.c \
+	ft_sort_bucket.c \
 	ft_sort_radix.c \
 	ft_push_swap_benchmark.c \
 	ft_push_swap_parser.c \

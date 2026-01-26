@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:06:50 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/22 18:06:49 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/24 21:35:01 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,12 @@ int			ft_stack_pos_min(t_stack *stack);
 int			ft_stack_pos_max(t_stack *stack);
 void		ft_stack_swap_pos(t_stack *stack, t_list_op *lst_op, int pos);
 void		ft_sort_insertion(t_stack *stack_a, t_list_op	*lst_op);
+void		ft_sort_insertion_invert(t_stack *stack, t_list_op	*lst_op);
 void		ft_sort_selection(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op);
 void		ft_sort_bubble(t_stack *stack_a, t_list_op *lst_op);
 void		ft_sort_min_max(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op);
+void		ft_sort_chunk(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op);
+void		ft_sort_bucket(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op);
 void		ft_sort_radix(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op);
 
 #endif
