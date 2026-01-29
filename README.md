@@ -45,6 +45,18 @@ Wikipedia :
 
 ## Technical choices
 
+### Simple sort algorithm (O(nˆ2))
+We try to use Insertion Sort, Selection Sort, Bubble Sort and Min/Max Sort. After testing, Selection Sort proved to be the most effective approach within the constraints of Push Swap.  
+
+### Medium sort algorithm (O(n√n))
+For the medium complexity algorithm sort, we use the Bucket Sort, combined with the Selection Sort. The Bucket Sort is the only sort we find for this type of complexity. The choice is how to sort the bucket; we try the Bubble Sort, the Insertion Sort, but as for Simple Complexity, the Selection Sort is the more efficient to sort a "bucket" of 50 integers.  
+
+### Complex sort algorithm (O(n log n))
+For this type of complexity algorithm, we use the Radix Sort. This sort is very efficient and fun to code. As we just have two stacks, to use Radix we need to have a binary approch to test the integers.  
+
+### Very small list (3 numbers maximum) sort algorithm
+For the very small list of integers, with 3 numbers maximum, we use an alternative algorithm with maximum 2 operations to sort this numbers.  
+
 ## Lists of integers
 
 *With 15% disorder :*  
