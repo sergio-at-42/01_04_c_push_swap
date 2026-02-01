@@ -6,45 +6,56 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:46:12 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/27 21:12:56 by Serge            ###   ########.fr       */
+/*   Updated: 2026/02/01 15:44:57 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_bucket(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op)
+// static int	ft_square_root(t_stack *stack_a)
+// {
+// 	int	sqrt;
+
+// 	sqrt = 0;
+// 	while (sqrt * sqrt <= stack_a->size)
+// 		sqrt++;
+// 	sqrt--;
+// 	return (sqrt);
+// }
+
+static	void	ft_sort(t_stack *stack_a, t_stack *stack_b, t_list_op *lst_op)
+{
+	while (stack_b->size > 0)
+	{
+		ft_stack_swap_pos(stack_b, lst_op, ft_stack_pos_max(stack_b));
+		ft_stack_push(stack_b, stack_a, lst_op);
+	}
+}
+
+void	ft_sort_bucket(t_stack *sa, t_stack *sb, t_list_op *lst_op)
 {
 	t_element	*top;
-	int			bucket_size;
-	int			i;
+	int			buck;
+	int			buck_max;
 
-	top = stack_a->top;
-	bucket_size = 50;
-	i = stack_a->size / bucket_size;
-	if (stack_a->size % bucket_size != 0)
-		i++;
-	while (i > 0)
+	top = sa->top;
+	buck = 50;
+	buck_max = sa->size;
+	while (buck_max > 0)
 	{
-		if (i == 1 && stack_a->size % bucket_size != 0)
-			bucket_size = stack_a->size % bucket_size;
-		while (stack_b->size < bucket_size)
+		if (buck_max < buck)
+			buck = buck_max;
+		while (sb->size < buck)
 		{
-			if (stack_a->top->norme > bucket_size * (i - 1) && stack_a->top->norme <= bucket_size * (i))
-				ft_stack_push(stack_a, stack_b, lst_op);
+			if (sa->top->norme > buck_max - buck && sa->top->norme <= buck_max)
+				ft_stack_push(sa, sb, lst_op);
 			else
-				ft_stack_reverse_rotate(stack_a, lst_op);
+				ft_stack_reverse_rotate(sa, lst_op);
 		}
-		if (i != stack_a->size / bucket_size + 1)
-			while (stack_a->top != top)
-				ft_stack_rotate(stack_a, lst_op);
-		while (stack_b->size > 0)
-		{
-			ft_stack_swap_pos(stack_b, lst_op, ft_stack_pos_max(stack_b));
-			ft_stack_push(stack_b, stack_a, lst_op);
-		}
-		top = stack_a->top;
-		if (i != 1)
-			ft_stack_reverse_rotate(stack_a, lst_op);
-		i--;
+		while (sa->top != top && buck_max - buck != sa->size && sa->size != 0)
+			ft_stack_rotate(sa, lst_op);
+		ft_sort(sa, sb, lst_op);
+		top = sa->top;
+		buck_max -= buck;
 	}
 }

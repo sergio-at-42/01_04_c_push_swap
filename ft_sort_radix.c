@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:46:12 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/24 17:20:32 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/30 19:14:02 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,14 @@ void	ft_sort_radix(t_stack *stack_a, t_stack *stack_b, t_list_op	*lst_op)
 		num_bit = 1;
 		while (num_bit <= nb_bit)
 		{
-			i = stack_a->size;
-			while (i > 0)
+			i = stack_a->size + 1;
+			while (--i > 0)
 			{
-				if (ft_stack_disorder(stack_a))
-				{
-					bit = ft_extract_bit(stack_a->top->norme, num_bit, nb_bit);
-					if (bit)
-						ft_stack_rotate(stack_a, lst_op);
-					else
-						ft_stack_push(stack_a, stack_b, lst_op);
-					i--;
-				}
+				bit = ft_extract_bit(stack_a->top->norme, num_bit, nb_bit);
+				if (bit)
+					ft_stack_rotate(stack_a, lst_op);
 				else
-					i = 0;
+					ft_stack_push(stack_a, stack_b, lst_op);
 			}
 			while (stack_b->size)
 				ft_stack_push(stack_b, stack_a, lst_op);

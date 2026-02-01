@@ -6,13 +6,13 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 16:41:16 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/22 17:01:53 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/30 17:45:33 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list_op	*ft_op_init()
+t_list_op	*ft_op_init(void)
 {
 	t_list_op	*lst_op;
 

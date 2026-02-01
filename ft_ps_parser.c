@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap_parser.c                              :+:      :+:    :+:   */
+/*   ft_ps_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:52:13 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/25 19:22:30 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/30 19:36:06 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	ft_check_option(char *arg, t_list_op *lst_op)
 	else if (ft_strcmp(arg, "--adaptive") == 0)
 		lst_op->strategy = 'a';
 	else
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 static int	ft_check_num(char *arg)
@@ -34,13 +34,14 @@ static int	ft_check_num(char *arg)
 	int	error;
 	int	i;
 
-	error = 1;
+	error = 0;
 	i = 0;
 	while (arg[i] != '\0')
 	{
-		if (!(arg[i] >= 9 && arg[i] <= 13) && arg[i] != 32 && arg[i] != '-' && arg[i] != '+'
+		if (!(arg[i] >= 9 && arg[i] <= 13) && arg[i] != 32
+			&& arg[i] != '-' && arg[i] != '+'
 			&& !(arg[i] >= 48 && arg[i] <= 57))
-				error = 0;
+			error = 1;
 		i++;
 	}
 	return (error);
@@ -49,23 +50,22 @@ static int	ft_check_num(char *arg)
 static int	ft_check_double(int arg_int, t_stack *stack)
 {
 	t_element	*element;
-	int	i;
+	int			i;
 
 	element = stack->top;
 	i = 1;
 	while (i <= stack->size)
 	{
 		if (element->integer == arg_int)
-			return (0);
+			return (1);
 		element = element->next;
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
-int	ft_push_swap_parser(int argc, char **argv, t_stack *stack, t_list_op *lst_op)
+int	ft_ps_parser(int argc, char **argv, t_stack *stack, t_list_op *lst_op)
 {
-	int arg_int;
 	int	error;
 	int	i;
 
@@ -75,18 +75,12 @@ int	ft_push_swap_parser(int argc, char **argv, t_stack *stack, t_list_op *lst_op
 		i = 1;
 		while (i < argc && !error)
 		{
-			if (ft_check_option(argv[i], lst_op))
-			{			
-				if (ft_check_num(argv[i]))
-				{
-					arg_int = ft_atoi(argv[i]);
-					if (ft_check_double(arg_int, stack))
-						ft_stack_add_element(stack, arg_int);
-					else
-						error = 1;
-				}
-				else
-					error = 1;
+			if (!ft_check_option(argv[i], lst_op))
+			{
+				error += ft_check_num(argv[i]);
+				error += ft_check_double(ft_atoi(argv[i]), stack);
+				if (!error)
+					ft_stack_add_element(stack, ft_atoi(argv[i]));
 			}
 			i++;
 		}

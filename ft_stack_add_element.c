@@ -6,11 +6,20 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:05:31 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/10 15:56:22 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/30 17:40:23 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	ft_stack_add_first_element(t_stack *stack, t_element *element)
+{
+	element->previous = element;
+	element->next = element;
+	stack->top = element;
+	stack->min = element;
+	stack->max = element;
+}
 
 t_element	*ft_stack_add_element(t_stack *stack, int integer)
 {
@@ -33,13 +42,7 @@ t_element	*ft_stack_add_element(t_stack *stack, int integer)
 			stack->max = element;
 	}
 	else
-	{
-		element->previous = element;
-		element->next = element;
-		stack->top = element;
-		stack->min = element;
-		stack->max = element;
-	}
+		ft_stack_add_first_element(stack, element);
 	stack->last = element;
 	stack->size++;
 	return (element);

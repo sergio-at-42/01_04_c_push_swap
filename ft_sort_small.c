@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:46:12 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/27 20:29:26 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/30 18:03:06 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_sort_small(t_stack *stack, t_list_op *lst_op)
 			if ((stack->top->norme == 2 && stack->top->next->norme == 1)
 				|| (stack->top->norme == 3 && stack->top->next->norme == 2)
 				|| (stack->top->norme == 1))
-					ft_stack_swap(stack, lst_op);
+				ft_stack_swap(stack, lst_op);
 			else if (stack->top->norme == 2)
 				ft_stack_reverse_rotate(stack, lst_op);
 			else

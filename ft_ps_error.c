@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap_error.c                               :+:      :+:    :+:   */
+/*   ft_ps_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:52:13 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/22 18:05:50 by Serge            ###   ########.fr       */
+/*   Updated: 2026/01/30 19:18:08 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_push_swap_error(int error)
+int	ft_ps_error(int error)
 {
 	write(2, "Error\n", 6);
 	return (error);
