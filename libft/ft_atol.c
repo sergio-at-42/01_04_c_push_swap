@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:15:07 by sbeldjao          #+#    #+#             */
-/*   Updated: 2026/01/20 16:14:07 by Serge            ###   ########.fr       */
+/*   Updated: 2026/02/02 20:24:52 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ static int	ft_isspace(int c)
 }
 
 /*
-Description : The atoi() function converts the initial portion of the string 
-pointed to by nptr to int. The behavior is the same as strtol(nptr, NULL, 10);
-checks for white-space characters. In the "C" and "POSIX" locales, these are: 
+Description : The atol() function converts the initial portion of the string 
+pointed to by nptr to long int.
+The behavior is the same as strtol(nptr, NULL, 10); checks for white-space 
+characters. In the "C" and "POSIX" locales, these are: 
 space, 
 form-feed ('\f'), 
 newline ('\n'), 
@@ -47,10 +48,10 @@ and vertical tab ('\v').
 /*
 Return : The converted value or 0 on error.
 */
-int	ft_atoi(const char *nptr)
+long	ft_atol(const char *nptr)
 {
-	int		integer;
-	int		sign;
+	long	integer;
+	long	sign;
 	int		i;
 
 	integer = 0;
@@ -66,7 +67,7 @@ int	ft_atoi(const char *nptr)
 	}
 	while (nptr[i] >= 48 && nptr[i] <= 57 && nptr[i] != '\0')
 	{
-		integer = integer * 10 + nptr[i] - 48;
+		integer = integer * 10 + (long)nptr[i] - 48;
 		i++;
 	}
 	return (integer * sign);

@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:52:13 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/30 19:36:06 by Serge            ###   ########.fr       */
+/*   Updated: 2026/02/02 20:22:43 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ static int	ft_check_double(int arg_int, t_stack *stack)
 	return (0);
 }
 
+static int	ft_check_limit(long arg_long)
+{
+	if (arg_long < -2147483648 || arg_long > 2147483647)
+		return (1);
+	return (0);
+}
+
 int	ft_ps_parser(int argc, char **argv, t_stack *stack, t_list_op *lst_op)
 {
 	int	error;
@@ -78,9 +85,10 @@ int	ft_ps_parser(int argc, char **argv, t_stack *stack, t_list_op *lst_op)
 			if (!ft_check_option(argv[i], lst_op))
 			{
 				error += ft_check_num(argv[i]);
-				error += ft_check_double(ft_atoi(argv[i]), stack);
+				error += ft_check_limit(ft_atol(argv[i]));
+				error += ft_check_double((int)ft_atol(argv[i]), stack);
 				if (!error)
-					ft_stack_add_element(stack, ft_atoi(argv[i]));
+					ft_stack_add_element(stack, (int)ft_atol(argv[i]));
 			}
 			i++;
 		}

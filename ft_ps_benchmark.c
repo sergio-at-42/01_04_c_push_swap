@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 13:55:44 by Serge             #+#    #+#             */
-/*   Updated: 2026/01/31 16:03:31 by Serge            ###   ########.fr       */
+/*   Updated: 2026/02/02 18:40:01 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ static	void	ft_disp_bench_discoder(t_stack *stack)
 static	void	ft_disp_bench_strategy(t_stack *stack, t_list_op *lst_op)
 {
 	ft_putstr_fd("[bench] strategy:	", 2);
-	if (lst_op->strategy == 's')
+	if (lst_op->strategy == 't')
+		ft_putstr_fd("Small Sort (size <= 5)", 2);
+	else if (lst_op->strategy == 's')
 		ft_putstr_fd("Simple / O(n²)", 2);
 	else if (lst_op->strategy == 'm')
 		ft_putstr_fd("Medium / O(n√n)", 2);

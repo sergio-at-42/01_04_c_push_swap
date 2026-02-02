@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 11:35:59 by sbeldjao          #+#    #+#             */
-/*   Updated: 2026/02/01 15:52:42 by Serge            ###   ########.fr       */
+/*   Updated: 2026/02/02 20:15:35 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 char	*ft_itoa(int n);
 void	ft_putchar_fd(const char c, int fd);
 void	ft_putstr_fd(const char *s, int fd);

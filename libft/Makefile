@@ -6,7 +6,7 @@
 #    By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/10 17:08:31 by sbeldjao          #+#    #+#              #
-#    Updated: 2026/02/01 14:18:26 by Serge            ###   ########.fr        #
+#    Updated: 2026/02/02 20:18:00 by Serge            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SOURCES =  \
 	ft_strlen.c \
 	ft_strcmp.c \
 	ft_strlcat.c \
-	ft_atoi.c \
+	ft_atol.c \
 	ft_itoa.c\
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
