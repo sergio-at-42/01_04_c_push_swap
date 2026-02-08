@@ -6,7 +6,7 @@
 /*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:52:13 by Serge             #+#    #+#             */
-/*   Updated: 2026/02/02 20:22:43 by Serge            ###   ########.fr       */
+/*   Updated: 2026/02/07 15:19:53 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ static int	ft_check_num(char *arg)
 		if (!(arg[i] >= 9 && arg[i] <= 13) && arg[i] != 32
 			&& arg[i] != '-' && arg[i] != '+'
 			&& !(arg[i] >= 48 && arg[i] <= 57))
-			error = 1;
+			error++;
+		if ((arg[i] == '-' || arg[i] == '+')
+			&& !(arg[i + 1] >= 48 && arg[i + 1] <= 57))
+			error++;
 		i++;
 	}
 	return (error);

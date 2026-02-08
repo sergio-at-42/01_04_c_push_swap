@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack_disorder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stfuente <stfuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Serge <serge.beldjaoui@learner.42.tech>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 13:55:44 by Serge             #+#    #+#             */
-/*   Updated: 2026/02/02 15:55:00 by stfuente         ###   ########.fr       */
+/*   Updated: 2026/02/07 14:51:32 by Serge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static	int	ft_nb_pairs(int size)
 		}
 		i++;
 	}
+	if (pairs == 0)
+		pairs = 1;
 	return (pairs);
 }
 
